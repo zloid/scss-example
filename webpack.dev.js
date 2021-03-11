@@ -10,6 +10,10 @@ module.exports = {
     mode: 'development',
     target: 'web',
     entry: './src/index.js',
+    output: {
+        hotUpdateChunkFilename: 'hot/hot-update.js',
+        hotUpdateMainFilename: 'hot/hot-update.json'
+    },
     devServer: {
         port: 8080,
         contentBase: path.join(__dirname, "dist"),
@@ -18,14 +22,7 @@ module.exports = {
         writeToDisk: true,
     },
     module: {
-        rules: [
-            // {
-            //     test: /\.m?js$/i,
-            //     exclude: /(node_modules|bower_components)/,
-            //     use: {
-            //         loader: 'babel-loader',
-            //     },
-            // },
+        rules: [            
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
