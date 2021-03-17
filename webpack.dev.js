@@ -12,20 +12,27 @@ module.exports = {
     entry: './src/index.js',
     output: {
         hotUpdateChunkFilename: 'hot/hot-update.js',
-        hotUpdateMainFilename: 'hot/hot-update.json'
+        hotUpdateMainFilename: 'hot/hot-update.json',
     },
     devServer: {
-        port: 8080,
-        contentBase: path.join(__dirname, "dist"),
+        port: 8081,
+        contentBase: path.join(__dirname, 'dist'),
         hot: true,
         watchContentBase: true,
         writeToDisk: true,
     },
     module: {
-        rules: [            
+        rules: [
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                // test: /\.css$/,
+                test: /\.(scss|css)$/,
+                use: [
+                    // MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    'css-loader',
+                    // 'postcss-loader',
+                    'sass-loader',
+                ],
             },
         ],
     },
