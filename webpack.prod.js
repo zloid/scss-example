@@ -11,13 +11,14 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'bundle.[hash:5].js',
+        assetModuleFilename: 'images/[name].[hash:5][ext][query]'
     },
     module: {
         rules: [
             {
                 test: /\.m?js$/i,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                 },
@@ -31,6 +32,26 @@ module.exports = {
                     'sass-loader',
                 ],
             },
+            {
+                // Load all images as base64 encoding if they are smaller than 8192 bytes
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
+
+                // use: [
+                    /*  {
+                        loader: 'url-loader',
+                        options: {
+                            name: 'assets/[name].[hash:5].[ext]',
+                        },
+                    }, */
+                   /*  {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/[name].[hash:5].[ext]',
+                        },
+                    }, */
+                // ],
+            },
         ],
     },
     plugins: [
@@ -39,8 +60,9 @@ module.exports = {
             template: path.resolve(__dirname, './public/index.html'),
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
+            // filename: '[name].css',
+            // chunkFilename: '[id].css',
+            filename: 'styles.[hash:5].css',
         }),
         new PurgecssPlugin({
             paths: glob.sync(`${path.join(__dirname, 'public')}/**/*`, {

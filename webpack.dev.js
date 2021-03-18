@@ -24,14 +24,37 @@ module.exports = {
     module: {
         rules: [
             {
-                // test: /\.css$/,
-                test: /\.(scss|css)$/,
+                test: /\.(scss|css)$/,                
                 use: [
                     // MiniCssExtractPlugin.loader,
                     'style-loader',
                     'css-loader',
-                    // 'postcss-loader',
                     'sass-loader',
+                ],
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/,
+                type: 'asset/resource'
+               /*  use: [
+                    {
+                        // loader: 'file-loader?emitFile=false&name=[path][name].[ext]'
+
+                        loader: 'url-loader',
+                        // options: {
+                            // On development we want to see where the file is coming from, hence we preserve the [path]
+                            // name: '[path][name].[ext]?hash=[hash:20]',
+                            // limit: 8192
+                        // }
+                    },
+                ], */
+            },
+            {
+                // Load all icons
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
                 ],
             },
         ],

@@ -1,0 +1,14 @@
+.main-header {
+    // background: red;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: url('../../public/assets/some_home.jpg') no-repeat #fff;
+    // background: url('../../public/assets/some_logo.png') no-repeat #fff;
+    background-size: contain;
+
+    &__text {
+        color: gold;
+        // color: green;
+    }
+}
