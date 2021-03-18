@@ -1,6 +1,18 @@
+@import '~include-media/dist/_include-media.scss';
 @import 'header.scss';
+@import 'variables.scss';
 
 body {
     background: #000;
     color: #fff;
+
+    @include media('>=phone') {
+        background: papayawhip;
+    }
+    @include media('>=tablet') {
+        background: blueviolet;
+    }
+    @include media('>=desktop') {
+        background: tomato;
+    }
 }

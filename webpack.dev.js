@@ -24,7 +24,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(scss|css)$/,                
+                test: /\.(scss|css)$/,
                 use: [
                     // MiniCssExtractPlugin.loader,
                     'style-loader',
@@ -34,29 +34,13 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
-                type: 'asset/resource'
-               /*  use: [
-                    {
-                        // loader: 'file-loader?emitFile=false&name=[path][name].[ext]'
-
-                        loader: 'url-loader',
-                        // options: {
-                            // On development we want to see where the file is coming from, hence we preserve the [path]
-                            // name: '[path][name].[ext]?hash=[hash:20]',
-                            // limit: 8192
-                        // }
-                    },
-                ], */
+                type: 'asset/resource',
             },
-            {
+            /* {
                 // Load all icons
                 test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                    },
-                ],
-            },
+                type: 'asset/resource',
+            }, */
         ],
     },
     plugins: [
